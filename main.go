@@ -12,6 +12,8 @@ import (
 )
 
 func main() {
+	// this config load is better
+	// example: https://github.com/melodiez14/meiko/blob/master/app.go
 	db := conn.InitDB(conn.DBConfig{
 		Database: "tokopedia-review",
 		Driver:   "postgres",
@@ -20,6 +22,15 @@ func main() {
 		Port:     "5432",
 		Host:     "devel-postgre.tkpd",
 	})
+
+	// this should be
+	// m := core.Init(db) {or struct of all db}
+	// f := funcs.Init(m)
+	// ...
+	// routerv1.InitRouter(f, r)
+	// routerv2.InitRouter(f, r)
+	// routerv3.InitRouter(f, r)
+	// ...
 
 	f := funcs.Init(db)
 
