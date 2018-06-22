@@ -10,10 +10,6 @@ import (
 	"github.com/melodiez14/repokecil/core"
 )
 
-type FuncsTest struct {
-	Review core.ReviewModel
-}
-
 type ReviewModelTest core.Model
 
 func (args ReviewModelTest) Get(id int64) (review core.Review, err error) {
