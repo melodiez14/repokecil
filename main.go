@@ -35,7 +35,8 @@ func main() {
 	f := funcs.Init(db)
 
 	r := httprouter.New()
+	r.Handler(http.MethodGet, "/debug/pprof/:item", http.DefaultServeMux)
 	routerv1.InitRouter(f, r)
 	routerv2.InitRouter(f, r)
-	http.ListenAndServe(":5000", r)
+	http.ListenAndServe(":8080", r)
 }
