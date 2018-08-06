@@ -1,0 +1,18 @@
+{% code
+type SmallStruct struct {
+	FirstName string
+	LastName  string
+	Age       int
+}
+%}
+
+// JSON marshaling
+{% stripspace %}
+{% func (d *SmallStruct) JSON() %}
+{
+	"first_name": {%q= d.FirstName %},
+	"last_name": {%q= d.LastName %},
+	"age": {%d= d.Age %}
+}
+{% endfunc %}
+{% endstripspace %}

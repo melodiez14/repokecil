@@ -1,0 +1,19 @@
+{% code
+type LargeStruct []SmallStruct
+%}
+
+// JSON marshaling
+{% stripspace %}
+{% func (d LargeStruct) JSON() %}
+[
+    {% for i, r := range d %}
+        {
+            "first_name": {%q= r.FirstName %},
+            "last_name": {%q= r.LastName %},
+            "age": {%d r.Age %}
+        }
+        {% if i + 1 < len(d) %},{% endif %}
+    {% endfor %}
+]
+{% endfunc %}
+{% endstripspace %}

@@ -4,12 +4,28 @@ package exinterface
 type User struct {
 	FirstName string
 	LastName  string
+	Age       int8
+}
+
+type Response struct {
+	Code int64
+	Data interface{}
 }
 
 func New() User {
 	return User{
 		FirstName: "Risal",
 		LastName:  "Falah",
+		Age:       23,
+	}
+}
+
+//go:noinline
+func GetResponse() Response {
+	user := New()
+	return Response{
+		Code: 200,
+		Data: user,
 	}
 }
 

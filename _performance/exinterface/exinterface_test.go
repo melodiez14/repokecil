@@ -23,3 +23,16 @@ func BenchmarkUser_ScanInterface2(b *testing.B) {
 		x.Scan("Risal", "Falah")
 	}
 }
+
+func BenchmarkUser_New(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_ = New()
+	}
+}
+
+func BenchmarkGetResponse(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		resp := GetResponse()
+		_ = resp.Data.(User)
+	}
+}
